@@ -53,8 +53,12 @@ pdf('01_SpaCC.pdf')
 SpaCCPlot(seo,feature = 'SpaCC')
 dev.off()
 
+library(fossil)
+ari <- fossil::adj.rand.index(seo$SpaCC, seo$seurat_clusters)
+ari
+
 library(profvis)
-# 使用 profvis 分析代码性能
+# 使用 profvis 分析性能
 profvis({
   # 这里是你要测试的代码
   seo <- SpaCC(
@@ -62,4 +66,3 @@ profvis({
     spatial_coords = spatial_coords
   )
 })
-
