@@ -1,6 +1,20 @@
 ## ------------------------------------------------
 ## Usage example
 ## ------------------------------------------------
+library(Seurat)
+library(Matrix)
+library(FNN)
+library(igraph)
+library(reticulate)
+library(leiden)
+library(dplyr)
+library(ggplot2)
+set.seed(42)      
+
+source('FindSpaCC.R')
+source('SpaCC.R')
+source('SpaCCPlot.R')
+
 setwd('E:\\stTNBC\\01')
 seo <- CreateSeuratObject(counts = Read10X('./'), project = 'Posterior1', assay = 'Spatial')
 seo$slice <- 1
@@ -48,3 +62,4 @@ profvis({
     spatial_coords = spatial_coords
   )
 })
+
